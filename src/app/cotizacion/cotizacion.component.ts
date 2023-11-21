@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-cotizacion',
+  templateUrl: './cotizacion.component.html',
+  styleUrls: ['./cotizacion.component.scss'],
 })
-export class HomePage {
+export class CotizacionComponent  implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
+  ngOnInit() {}
 
+  
   miformulario2 = new FormGroup({
     tipoPrenda: new FormControl('', [Validators.required]),
     tallaPrenda: new FormControl('', [Validators.required]),
@@ -131,9 +133,38 @@ export class HomePage {
   
   arrayCargarUnicamente:any[]=[];
 
-  borrarElemento(i:number){
+  borrarElemento(i:number): void{
     this.shoppingCar.splice(i,1);
     this.sumarTotal();
+  }
+
+  borrarDatos():void {
+    this.shoppingCar =[];
+  }
+
+
+  /** */
+
+  public alertButtons = [
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        console.log('Alert canceled');
+      },
+    },
+    {
+      text: 'OK',
+      role: 'confirm',
+      handler: () => {
+        console.log('Alert confirmed');
+        this.shoppingCar =[];
+      },
+    },
+  ];
+
+  setResult(ev:any) {
+    console.log(`Dismissed with role: ${ev.detail.role}`);
   }
 
 }

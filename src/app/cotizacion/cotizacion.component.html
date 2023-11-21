@@ -1,0 +1,154 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cotizaciones
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-navegar></app-navegar>
+
+  <!-- <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+
+
+ 
+
+  
+  
+  
+  
+    <form [formGroup] = "miformulario2">
+  
+  
+  
+     <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-select  formControlName="tipoPrenda">
+              <div slot="label">Seleccione Prenda<ion-text color="danger">(Required)</ion-text></div>
+              <ion-select-option value={{seleccion.prenda}} *ngFor="let seleccion of tipoPrenda">{{seleccion.prenda}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        
+        <ion-col>
+          <ion-item>
+            <ion-select  placeholder="Talla" formControlName="tallaPrenda">
+              <div slot="label">Seleccione Talla<ion-text color="danger">(Required)</ion-text></div>
+              <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-input label="Insert cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+     </ion-grid>
+      
+      <!-- <input class="number" type="number"   formControlName="cantidadPrenda"> -->
+      
+      
+  
+   
+    
+    
+      <!-- <ion-button class="boton-enviar" type="submit" value="agregar"  (click)="addPerson(miformulario2)"> </ion-button> -->
+  <!-- <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
+    <ion-ripple-effect >Add</ion-ripple-effect>
+    Add</ion-button> -->
+
+    <ion-grid>
+      <ion-row>
+        <ion-col> 
+          <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
+          <ion-ripple-effect >Add</ion-ripple-effect>
+          Add</ion-button>
+        </ion-col>
+
+        
+        
+
+        <ion-col>
+          <ion-button id="present-alert">Borrar Todo</ion-button>
+            <ion-alert
+              trigger="present-alert"
+              header="Esta accion borrara la cotizacion. Borrar de todas formas?"
+              [buttons]="alertButtons"
+              (didDismiss)="setResult($event)"
+            ></ion-alert>
+        </ion-col>
+      </ion-row>
+
+      
+    </ion-grid>
+  
+  
+  <!-- <div class="ion-activatable ripple-parent custom-parent">
+    <ion-ripple-effect >Add</ion-ripple-effect>
+  </div> -->
+  </form>
+  
+  <div>
+    <!--   <p *ngFor="let mi of this.shoppingCar">{{mi.prenda}} {{mi.talla}} {{mi.precio}}</p> -->
+   
+    
+    <div class="container-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Tipo P</th>
+            <th>T</th>
+            <th>Prec Unt</th>
+            <th>C</th>
+            <th>Precio T</th>
+            <th>Ad</th>
+          </tr>
+        </thead>
+        <tbody>
+    
+          <tr *ngFor="let mi of this.shoppingCar; index as i">
+            <td>{{i+1}}</td>
+            <td>{{mi.prenda}}</td>
+            <td>{{mi.talla}}</td>
+            <td>{{mi.precio}}</td>
+            <td>{{mi.cantidad}}</td>
+            <td>${{mi.total}}</td>
+            <td>
+             <!--  <input type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)"> -->
+  
+             <!--  <ion-button color="danger" type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)">Delete</ion-button> -->
+  
+              <ion-icon (click)="borrarElemento(i)" name="trash-sharp"></ion-icon>
+            
+            </td>
+          </tr>
+    
+        </tbody>
+      </table>
+  
+      <div>
+        <h2 class="title-h2">Total: $ <span>{{Total}}</span></h2>
+      </div>
+    </div>
+  
+  </div>
+  
+  
+</ion-content>
+
