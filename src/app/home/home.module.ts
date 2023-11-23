@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { CotizacionComponent } from '../cotizacion/cotizacion.component';
 import { NavegarComponent } from '../cotizacion/navegar/navegar.component';
+import { FacturaComponent } from '../factura/factura.component';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import { NavegarComponent } from '../cotizacion/navegar/navegar.component';
     ReactiveFormsModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, CotizacionComponent, NavegarComponent]
+  declarations: [HomePage, CotizacionComponent, NavegarComponent, FacturaComponent]
 })
 export class HomePageModule {}
