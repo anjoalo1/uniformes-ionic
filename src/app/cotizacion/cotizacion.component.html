@@ -30,67 +30,62 @@
     <form [formGroup] = "miformulario2">
   
   
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-select label="Seleccione prenda" label-placement="floating" fill="solid"  formControlName="tipoPrenda">
+                <!-- <div slot="label">T Prenda<ion-text color="danger"></ion-text></div> -->
+                <ion-select-option value={{seleccion.prenda}} *ngFor="let seleccion of tipoPrenda">{{seleccion.prenda}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+          
+          <ion-col>
+            <ion-item>
+              <!-- <ion-select  label="Outline select" label-placement="floating" fill="outline"  formControlName="tallaPrenda">
+                <div slot="label">Talla<ion-text color="danger"></ion-text></div>
+                <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
+              </ion-select> -->
   
-     <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-select  formControlName="tipoPrenda">
-              <div slot="label">T Prenda<ion-text color="danger">(Required)</ion-text></div>
-              <ion-select-option value={{seleccion.prenda}} *ngFor="let seleccion of tipoPrenda">{{seleccion.prenda}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-        
-        <ion-col>
-          <ion-item>
-            <ion-select  placeholder="Talla" formControlName="tallaPrenda">
-              <div slot="label">Talla<ion-text color="danger">(Required)</ion-text></div>
-              <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-
-        <ion-col>
-          <ion-item>
-            <ion-input label="Insert cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
-          </ion-item>
-
-        </ion-col>
-      </ion-row>
-     </ion-grid>
-      
-      <!-- <input class="number" type="number"   formControlName="cantidadPrenda"> -->
-      
-      
+              <ion-select  label="Seleccione talla" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
+                <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
   
-   
-    
-    
-      <!-- <ion-button class="boton-enviar" type="submit" value="agregar"  (click)="addPerson(miformulario2)"> </ion-button> -->
-  <!-- <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
-    <ion-ripple-effect >Add</ion-ripple-effect>
-    Add</ion-button> -->
+          <ion-col>
+          <!--   <ion-item>
+              <ion-input label="Insert cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
+  
+            </ion-item> -->
+            <ion-input label="Cantidad" label-placement="floating" fill="solid" placeholder="Cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
+  
+          </ion-col>
+        </ion-row>
+       </ion-grid>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col> 
-          <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
-          <ion-ripple-effect >Add</ion-ripple-effect>
-          Add</ion-button>
-        </ion-col>
 
-        <ion-col>
-          <ion-button id="present-alert">Borrar Todo</ion-button>
-            <ion-alert
-              trigger="present-alert"
-              header="Esta accion borrara la cotizacion. Borrar de todas formas?"
-              [buttons]="alertButtons"
-              (didDismiss)="setResult($event)"
-            ></ion-alert>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+
+       <ion-grid>
+        <ion-row>
+          <ion-col> 
+            <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
+            <ion-ripple-effect >Add</ion-ripple-effect>
+            Add</ion-button>
+          </ion-col>
+  
+          <ion-col>
+            <ion-button id="present-alert">Borrar Todo</ion-button>
+              <ion-alert
+                trigger="present-alert"
+                header="Esta accion borrara la cotizacion. Borrar de todas formas?"
+                [buttons]="alertButtons"
+                (didDismiss)="setResult($event)"
+              ></ion-alert>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
   
   
  

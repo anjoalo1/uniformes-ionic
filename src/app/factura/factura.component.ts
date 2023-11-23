@@ -235,8 +235,12 @@ export class FacturaComponent  implements OnInit {
     // Generar el PDF
     //pdfMake.createPdf(docDefinition).download('tabla_informacion.pdf');
     const pdf = pdfMake.createPdf(docDefinition);
-    pdf.open();
+    //pdf.open();
+      pdf.download();
   }
+
+
+
 
 
   /*********************************** */

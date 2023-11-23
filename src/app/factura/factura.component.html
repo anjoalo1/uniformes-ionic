@@ -35,8 +35,8 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-select  formControlName="tipoPrenda">
-              <div slot="label">T Prenda<ion-text color="danger">(Required)</ion-text></div>
+            <ion-select label="Seleccione prenda" label-placement="floating" fill="solid"  formControlName="tipoPrenda">
+              <!-- <div slot="label">T Prenda<ion-text color="danger"></ion-text></div> -->
               <ion-select-option value={{seleccion.prenda}} *ngFor="let seleccion of tipoPrenda">{{seleccion.prenda}}</ion-select-option>
             </ion-select>
           </ion-item>
@@ -44,21 +44,33 @@
         
         <ion-col>
           <ion-item>
-            <ion-select  placeholder="Talla" formControlName="tallaPrenda">
-              <div slot="label">Talla<ion-text color="danger">(Required)</ion-text></div>
+            <!-- <ion-select  label="Outline select" label-placement="floating" fill="outline"  formControlName="tallaPrenda">
+              <div slot="label">Talla<ion-text color="danger"></ion-text></div>
+              <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
+            </ion-select> -->
+
+            <ion-select  label="Seleccione talla" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
               <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
 
         <ion-col>
-          <ion-item>
+        <!--   <ion-item>
             <ion-input label="Insert cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
-          </ion-item>
+
+          </ion-item> -->
+          <ion-input label="Cantidad" label-placement="floating" fill="solid" placeholder="Cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
 
         </ion-col>
       </ion-row>
      </ion-grid>
+
+    <!--  <ion-select  label="Solid select" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
+      <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
+    </ion-select> -->
+
+     <!-- <ion-input label="Cantidad" label-placement="floating" fill="outline" placeholder="Cantidad" type="number" formControlName="cantidadPrenda"></ion-input> -->
       
       <!-- <input class="number" type="number"   formControlName="cantidadPrenda"> -->
       
