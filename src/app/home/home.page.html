@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Confecciones Monadita
+      HOME
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">HOME</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -65,7 +65,18 @@
               <td class="item-prenda">{{mi.prenda}}</td>
               <td>{{mi.talla}}</td>
               <td>${{mi.precio}}</td>
-              <td>{{mi.cantidad}}</td>
+              <td>
+                <div class="container-cantidad">
+                  <div>{{mi.cantidad}}</div>
+                  <div class="container-buttons">
+                    <button (click)="aumentar(i)">
+                      <ion-icon name="caret-up-outline"></ion-icon></button>
+                    <button (click)="disminuir(i)">
+                      <ion-icon name="caret-down-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              </td>
               <td>${{mi.total}}</td>
               <td>
                <!--  <input type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)"> -->

@@ -55,3 +55,15 @@ tr:nth-child(2n+1) {
 .item-prenda{
   color: red;
 }
+
+.container-cantidad{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.container-buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
