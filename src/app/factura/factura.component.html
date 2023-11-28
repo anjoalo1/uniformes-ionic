@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Cotizaciones
+      Facturación
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -66,24 +66,6 @@
       </ion-row>
      </ion-grid>
 
-    <!--  <ion-select  label="Solid select" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
-      <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
-    </ion-select> -->
-
-     <!-- <ion-input label="Cantidad" label-placement="floating" fill="outline" placeholder="Cantidad" type="number" formControlName="cantidadPrenda"></ion-input> -->
-      
-      <!-- <input class="number" type="number"   formControlName="cantidadPrenda"> -->
-      
-      
-  
-   
-    
-    
-      <!-- <ion-button class="boton-enviar" type="submit" value="agregar"  (click)="addPerson(miformulario2)"> </ion-button> -->
-  <!-- <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
-    <ion-ripple-effect >Add</ion-ripple-effect>
-    Add</ion-button> -->
-
     <ion-grid>
       <ion-row>
         <ion-col> 
@@ -93,7 +75,7 @@
         </ion-col>
 
         <ion-col>
-          <ion-button id="present-alert">Borrar Todo</ion-button>
+          <ion-button color="danger" id="present-alert">Borrar Todo</ion-button>
             <ion-alert
               trigger="present-alert"
               header="Esta accion borrara la cotizacion. Borrar de todas formas?"

@@ -25,3 +25,33 @@
 #container a {
   text-decoration: none;
 }
+
+.title-h2>span{
+  color: red;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  box-shadow: 5px 5px 5px rgba(207, 201, 201, 0.5);
+}
+
+tr th{
+  background-color: rgb(8, 8, 77);
+}
+
+th, td {
+  border: 1px solid rgb(252, 248, 248);
+  padding: 8px 2px;
+}
+
+
+tr:nth-child(2n+1) {
+  background-color: rgb(85, 80, 80); /* Cambia el color de fondo según tus preferencias */
+}
+
+.item-prenda{
+  color: red;
+}

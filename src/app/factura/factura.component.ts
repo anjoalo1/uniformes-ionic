@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
+
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+
 
 
 
@@ -235,8 +238,13 @@ export class FacturaComponent  implements OnInit {
     // Generar el PDF
     //pdfMake.createPdf(docDefinition).download('tabla_informacion.pdf');
     const pdf = pdfMake.createPdf(docDefinition);
-    //pdf.open();
-      pdf.download();
+    
+    pdf.open();
+      //pdf.download(); 
+
+      
+
+      
   }
 
 
@@ -267,5 +275,9 @@ export class FacturaComponent  implements OnInit {
   
     return `${fechaFormateada} ${horaFormateada}`;
   }
+
+
+  /************************ */
+ 
 
 }
