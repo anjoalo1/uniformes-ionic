@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {tallas, precios} from '../archives/arrays';
 
 @Component({
   selector: 'app-home',
@@ -12,25 +13,41 @@ export class HomePage {
 
   filtrarTalla:any[]=[];
   shoppingCar:any[]=[];
-  //shoppingCarCopy:any[]=[];
   Total:number=0;
-  producto:any={};
+  //producto:any={};
 
   miformulario2 = new FormGroup({
+    gender: new FormControl('male'),
     tallaPrenda: new FormControl('', [Validators.required])
 
  });
 
  cargarSelect(miformulario2:FormGroup){
-  let otroproducto =this.precios.filter(elemento=>elemento.talla==miformulario2.value.tallaPrenda).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
-   this.shoppingCar=[...otroproducto];
-   //this.shoppingCarCopy.push(...[this.shoppingCar]);
-   //console.log(this.shoppingCarCopy, this.shoppingCarCopy.length);
+
+  if(miformulario2.value.gender=="male"){
+    console.log(miformulario2.value.gender)
+    let productoMale = this.precios.filter((elemento)=>{
+      return (elemento.talla==miformulario2.value.tallaPrenda && elemento.prenda!="falda" );
+    }).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
+    this.shoppingCar=[...productoMale];
    this.sumarTotal();
+   
+  }else if(miformulario2.value.gender=="female"){
+    console.log(miformulario2.value.gender)
+    let productoFemale = this.precios.filter((elemento)=>{
+      return (elemento.talla==miformulario2.value.tallaPrenda && elemento.prenda!="pantalon" );
+    }).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
+    this.shoppingCar=[...productoFemale];
+    this.sumarTotal();
+  }
+
+
+ /*  let otroproducto =this.precios.filter(elemento=>elemento.talla==miformulario2.value.tallaPrenda).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
+   this.shoppingCar=[...otroproducto];
+   this.sumarTotal(); */
  }
 
-
- tallas:any[]=[
+  tallas:any[]=[
     {"talla":"6"},
     {"talla":"8"},
     {"talla":"10"},
@@ -40,8 +57,6 @@ export class HomePage {
     {"talla":"m"},
     {"talla":"l"},
   ];
-
-
 
  precios:any[]=[
     {"prenda":"camibuso", "talla":"6", "precio":26000},
@@ -60,8 +75,39 @@ export class HomePage {
     {"prenda":"chaqueta", "talla":"16", "precio":75000},
     {"prenda":"chaqueta", "talla":"m", "precio":80000},
     {"prenda":"chaqueta", "talla":"l", "precio":85000},
-  ];
-
+    {"prenda":"falda", "talla":"6", "precio":50000},
+    {"prenda":"falda", "talla":"8", "precio":50000},
+    {"prenda":"falda", "talla":"10", "precio":50000},
+    {"prenda":"falda", "talla":"12", "precio":50000},
+    {"prenda":"falda", "talla":"14", "precio":60000},
+    {"prenda":"falda", "talla":"16", "precio":60000},
+    {"prenda":"falda", "talla":"m", "precio":60000},
+    {"prenda":"falda", "talla":"l", "precio":60000},
+    {"prenda":"pantalon", "talla":"6", "precio":50000},
+    {"prenda":"pantalon", "talla":"8", "precio":50000},
+    {"prenda":"pantalon", "talla":"10", "precio":50000},
+    {"prenda":"pantalon", "talla":"12", "precio":50000},
+    {"prenda":"pantalon", "talla":"14", "precio":60000},
+    {"prenda":"pantalon", "talla":"16", "precio":60000},
+    {"prenda":"pantalon", "talla":"m", "precio":60000},
+    {"prenda":"pantalon", "talla":"l", "precio":60000},
+    {"prenda":"sudadera", "talla":"6", "precio":50000},
+    {"prenda":"sudadera", "talla":"8", "precio":50000},
+    {"prenda":"sudadera", "talla":"10", "precio":50000},
+    {"prenda":"sudadera", "talla":"12", "precio":50000},
+    {"prenda":"sudadera", "talla":"14", "precio":60000},
+    {"prenda":"sudadera", "talla":"16", "precio":60000},
+    {"prenda":"sudadera", "talla":"m", "precio":60000},
+    {"prenda":"sudadera", "talla":"l", "precio":60000},
+    {"prenda":"pantaloneta", "talla":"6", "precio":50000},
+    {"prenda":"pantaloneta", "talla":"8", "precio":50000},
+    {"prenda":"pantaloneta", "talla":"10", "precio":50000},
+    {"prenda":"pantaloneta", "talla":"12", "precio":50000},
+    {"prenda":"pantaloneta", "talla":"14", "precio":60000},
+    {"prenda":"pantaloneta", "talla":"16", "precio":60000},
+    {"prenda":"pantaloneta", "talla":"m", "precio":60000},
+    {"prenda":"pantaloneta", "talla":"l", "precio":60000},
+  ]; 
 
 sumarTotal(){
   const sumaPrecios: number = this.shoppingCar.reduce((acumulador, elemento) =>{return acumulador + elemento.total}, 0);
@@ -77,7 +123,6 @@ aumentar(i:number): void{
   this.shoppingCar[i].cantidad +=1;
   this.shoppingCar[i].total = this.shoppingCar[i].cantidad*this.shoppingCar[i].precio;
   this.sumarTotal();
-  console.log(this.shoppingCar);
   }
 
 disminuir(i:number): void{
@@ -85,7 +130,6 @@ disminuir(i:number): void{
   this.shoppingCar[i].cantidad-=1;
   this.shoppingCar[i].total = this.shoppingCar[i].cantidad*this.shoppingCar[i].precio;
   this.sumarTotal();
-
   }
 
 }

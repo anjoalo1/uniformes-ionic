@@ -21,7 +21,13 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          
+            <ion-radio-group value="male" formControlName="gender">
+              <ion-radio  color="primary"  value="male">Male</ion-radio><br />
+              <ion-radio color="primary"  value="female">Female</ion-radio><br />
+            </ion-radio-group>
+        </ion-col>
+
+        <ion-col>
           <ion-item>
             <ion-select label="Seleccione T" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
               <!-- <div slot="label">T Prenda<ion-text color="danger"></ion-text></div> -->
@@ -33,7 +39,7 @@
         </ion-col>
         
         <ion-col>
-          <ion-button (click)="cargarSelect(miformulario2)">
+          <ion-button (click)="cargarSelect(miformulario2)" [disabled]="miformulario2.invalid">
             <ion-ripple-effect >Add</ion-ripple-effect>
             Add</ion-button>
           </ion-col>
@@ -44,7 +50,7 @@
      
       
 
-
+    <div *ngIf="this.Total>0">
       <div class="container-table">
         <table>
           <thead>
@@ -91,10 +97,11 @@
           </tbody>
         </table>
     
-        <div>
+        <div >
           <h2 class="title-h2">Total: $ <span>{{Total}}</span></h2>
         </div>
       </div>
+    </div>
 
 
  
