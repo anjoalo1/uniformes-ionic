@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, MinValidator, Validators } from '@angular/forms';
 import {precios, tallas, tipoPrenda} from '../archives/arrays';
 
 
@@ -38,6 +38,12 @@ export class FacturaComponent  implements OnInit {
     tallaPrenda: new FormControl('', [Validators.required]),
     cantidadPrenda: new FormControl('', [Validators.required, Validators.min(1)])
  });
+
+ datosCliente = new FormGroup({
+  name: new FormControl('', [Validators.required]),
+  apellido: new FormControl('', [Validators.required]),
+  identificacion: new FormControl('', [Validators.required, Validators.min(1), Validators.max(999999999999)]),
+ })
 
   addPerson(miformulario:any):void{
     const pasarVariable = miformulario.value;
@@ -146,6 +152,12 @@ export class FacturaComponent  implements OnInit {
       content: [
         
         { text: 'Factura de venta', style: 'header' },
+        {
+         text:["Nombre: ", this.datosCliente.value.name ," Apellido: ", this.datosCliente.value.apellido ," Identificación: ", this.datosCliente.value.identificacion]
+        },
+        {
+          text:'\n'
+        },
         {text: fechaFormateada},
         {
           table: {
