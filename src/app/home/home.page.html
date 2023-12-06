@@ -7,23 +7,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+ <!--  <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">HOME</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
 
 
   <app-navegar></app-navegar>
 
   <form [formGroup]="miformulario2">
-
     <ion-grid>
       <ion-row>
         <ion-col>
             <ion-radio-group value="male" formControlName="gender">
-              <ion-radio  color="primary"  value="male">Male</ion-radio><br />
-              <ion-radio color="primary"  value="female">Female</ion-radio><br />
+              <ion-radio  color="primary"  value="male">Hombre</ion-radio><br />
+              <ion-radio color="primary"  value="female">Mujer</ion-radio><br />
             </ion-radio-group>
         </ion-col>
 
@@ -34,8 +33,6 @@
               <ion-select-option value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
             </ion-select>
           </ion-item>
-          
-          
         </ion-col>
         
         <ion-col>
@@ -45,13 +42,10 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
-    </form>
+  </form>
      
       
-
-    <div *ngIf="this.Total>0">
-      <div class="container-table">
+      <div class="container-table" *ngIf="this.Total>0">
         <table>
           <thead>
             <tr>
@@ -85,15 +79,9 @@
               </td>
               <td>${{mi.total}}</td>
               <td>
-               <!--  <input type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)"> -->
-    
-               <!--  <ion-button color="danger" type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)">Delete</ion-button> -->
-    
                 <ion-icon (click)="borrarElemento(i)" name="trash-sharp"></ion-icon>
-              
               </td>
             </tr>
-      
           </tbody>
         </table>
     
@@ -101,14 +89,8 @@
           <h2 class="title-h2">Total: $ <span>{{Total}}</span></h2>
         </div>
       </div>
-    </div>
 
 
- 
-  
-
-  
-  
 </ion-content>
 
 
