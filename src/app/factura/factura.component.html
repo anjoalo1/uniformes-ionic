@@ -15,17 +15,8 @@
 
   <app-navegar></app-navegar>
 
-  <!-- <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
 
-
- 
-
-  
   <form [formGroup]="datosCliente">
-
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -34,14 +25,11 @@
           </ion-item>
         </ion-col>
 
-
         <ion-col>
           <ion-item>
             <ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="apellido"></ion-input>
           </ion-item>
         </ion-col>
-
-
 
         <ion-col>
           <ion-item>
@@ -50,15 +38,10 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-
-
   </form>
   
   
     <form [formGroup] = "miformulario2">
-  
-  
-  
      <ion-grid>
       <ion-row>
         <ion-col>
@@ -72,11 +55,7 @@
         
         <ion-col>
           <ion-item>
-            <!-- <ion-select  label="Outline select" label-placement="floating" fill="outline"  formControlName="tallaPrenda">
-              <div slot="label">Talla<ion-text color="danger"></ion-text></div>
-              <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
-            </ion-select> -->
-
+          
             <ion-select  label="Seleccione talla" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
               <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
             </ion-select>
@@ -84,10 +63,6 @@
         </ion-col>
 
         <ion-col>
-        <!--   <ion-item>
-            <ion-input label="Insert cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
-
-          </ion-item> -->
           <ion-input label="Cantidad" label-placement="floating" fill="solid" placeholder="Cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
 
         </ion-col>
@@ -113,15 +88,37 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  
-  
- 
   </form>
+
+  <div>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-text color="dark">
+            <h1>{{this.generarFecha}}</h1>
+          </ion-text>
+        </ion-col>
+
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-text color="dark">
+            <h1>Nombre: {{datosCliente.value.name}}<span> {{datosCliente.value.apellido}}</span> </h1>
+          </ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-text color="dark">
+            <h1>Cedula: {{datosCliente.value.identificacion}}</h1>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
   
   <div>
-    
-   
-    
     <div class="container-table" *ngIf="this.Total>0">
       <table>
         <thead>
@@ -154,10 +151,6 @@
             </div></td>
             <td>${{mi.total}}</td>
             <td>
-             <!--  <input type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)"> -->
-  
-             <!--  <ion-button color="danger" type="button" placeholder="eliminar" value="eliminar" (click)="borrarElemento(i)">Delete</ion-button> -->
-  
               <ion-icon (click)="borrarElemento(i)" name="trash-sharp"></ion-icon>
             
             </td>
@@ -170,7 +163,6 @@
         <h2 class="title-h2">Total: $ <span>{{Total}}</span></h2>
       </div>
     </div>
-  
   </div>
 
 

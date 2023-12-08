@@ -28,6 +28,7 @@ export class FacturaComponent  implements OnInit {
   arrayCargarUnicamente:any[]=[];
   producto:any={};
   Total:number=0;
+  generarFecha:any;
  
    tallas=tallas;
    precios=precios;
@@ -142,6 +143,8 @@ export class FacturaComponent  implements OnInit {
 
     const fechaActual = new Date();
     const fechaFormateada:any = this.formatearFecha(fechaActual);
+    this.generarFecha = fechaFormateada;
+
 
     console.log(fechaFormateada);
   
@@ -166,6 +169,7 @@ export class FacturaComponent  implements OnInit {
             body: [columnas, ...filas], // Agregar filas
           },
         },
+        {text:"\n"},
         {text: 'Total: $ ' + this.Total, style:'total'},
 
        
