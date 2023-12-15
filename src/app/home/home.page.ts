@@ -21,20 +21,29 @@ export class HomePage {
       });
   }
 
-
- 
-
-
   filtrarTalla:any[]=[];
   shoppingCar:any[]=[];
   Total:number=0;
   tallas = tallas;
   precios=precios;
+  generarFecha:any;
+  favoriteSeason:string="";
+
+
  
   miformulario2 = new FormGroup({
     gender: new FormControl('male'),
     tallaPrenda: new FormControl('', [Validators.required])
  });
+
+ 
+ datosCliente = new FormGroup({
+  name: new FormControl('', [Validators.required]),
+  apellido: new FormControl('', [Validators.required]),
+  identificacion: new FormControl('', [Validators.required, Validators.min(1), Validators.max(999999999999)]),
+ })
+
+
 
  cargarSelect(miformulario2:FormGroup): void{
 
@@ -50,6 +59,9 @@ export class HomePage {
     this.shoppingCar=[...productoFemale];
     this.sumarTotal();
   }
+  const fechaActual = new Date();
+  const fechaFormateada= this.formatearFecha(fechaActual);
+  this.generarFecha = fechaFormateada;
  }
 
   sumarTotal(): void{
@@ -74,4 +86,32 @@ export class HomePage {
     this.shoppingCar[i].total = this.shoppingCar[i].cantidad*this.shoppingCar[i].precio;
     this.sumarTotal();
     }
+
+
+    /* funcion apra generar fecha */
+    formatearFecha(fecha: Date): string {
+      const opcionesFecha: Intl.DateTimeFormatOptions = {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+      };
+    
+      const opcionesHora: Intl.DateTimeFormatOptions = {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      };
+    
+      const fechaFormateada = fecha.toLocaleDateString('es-CO', opcionesFecha);
+      const horaFormateada = fecha.toLocaleTimeString('es-CO', opcionesHora);
+    
+      return `${fechaFormateada} ${horaFormateada}`;
+    }
+
 }
+
+
+
+
+
+

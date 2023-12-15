@@ -23,10 +23,12 @@
                 <ion-radio-group value="male" formControlName="gender">
                 <ion-item>
                   <ion-radio  color="primary"  value="male">Hombre</ion-radio><br />
+                </ion-item>
+                <ion-item>
                   <ion-radio color="primary"  value="female">Mujer</ion-radio><br />
                 </ion-item>
               </ion-radio-group>
-              </ion-col>
+        </ion-col>
               
         <ion-col>
           <ion-item>
@@ -45,7 +47,79 @@
         </ion-row>
       </ion-grid>
   </form>
-     
+
+      <ion-grid *ngIf="this.Total>0">
+        <ion-row>
+          <ion-col>
+            <ion-text>¿Generar Factura?</ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-radio-group value="false" [(ngModel)]="favoriteSeason">
+              <ion-item>
+                <ion-radio  color="primary"  value=true>Si</ion-radio><br />
+              </ion-item>
+              <ion-item>
+                <ion-radio color="primary"  value=false>No</ion-radio><br />
+              </ion-item>
+            </ion-radio-group>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+    <!-- datos cliente div  -->
+    <div *ngIf="favoriteSeason=='true'">
+      <form [formGroup]="datosCliente">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-input label="Nombre" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="name"></ion-input>
+              </ion-item>
+              </ion-col>
+              
+              <ion-col>
+                <ion-item>
+                  <ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="apellido"></ion-input>
+                </ion-item>
+              </ion-col>
+              
+              <ion-col>
+                <ion-item>
+                  <ion-input label="Identificación" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="identificacion" type="number"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+        
+        <ion-grid>
+          
+          <ion-row>
+            <ion-col>
+              <ion-text color="dark">
+                {{this.generarFecha}}
+              </ion-text>
+            </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            <ion-text color="dark">
+              Nombre: {{datosCliente.value.name}} {{datosCliente.value.apellido}}
+            </ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-text color="dark">
+              Cedula: {{datosCliente.value.identificacion}}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+      
+      
+      
       
       <div class="container-table" *ngIf="this.Total>0">
         <table>
@@ -92,6 +166,8 @@
         </div>
       </div>
 
+
+     
 
 </ion-content>
 

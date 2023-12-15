@@ -1,0 +1,156 @@
+
+
+
+<form [formGroup]="datosCliente">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-input label="Nombre" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="name"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="apellido"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-input label="Identificación" label-placement="floating" fill="solid" placeholder="Enter text" formControlName="identificacion" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
+  <form [formGroup] = "miformulario2">
+   <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-select label="Seleccione prenda" label-placement="floating" fill="solid"  formControlName="tipoPrenda">
+            <!-- <div slot="label">T Prenda<ion-text color="danger"></ion-text></div> -->
+            <ion-select-option value={{seleccion.prenda}} *ngFor="let seleccion of tipoPrenda">{{seleccion.prenda}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      
+      <ion-col>
+        <ion-item>
+        
+          <ion-select  label="Seleccione talla" label-placement="floating" fill="solid"  formControlName="tallaPrenda">
+            <ion-select-option  value={{seleccion.talla}} *ngFor="let seleccion of tallas">{{seleccion.talla}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-input label="Cantidad" label-placement="floating" fill="solid" placeholder="Cantidad" type="number" formControlName="cantidadPrenda"></ion-input>
+
+      </ion-col>
+    </ion-row>
+   </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col> 
+        <ion-button  (click)="addPerson(miformulario2)" [disabled]="miformulario2.invalid">
+        <ion-ripple-effect >Add</ion-ripple-effect>
+        Add</ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button color="danger" id="present-alert">Borrar Todo</ion-button>
+          <ion-alert
+            trigger="present-alert"
+            header="Esta accion borrara la cotizacion. Borrar de todas formas?"
+            [buttons]="alertButtons"
+            (didDismiss)="setResult($event)"
+          ></ion-alert>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+<div>
+  <ion-grid>
+    <ion-row>
+
+      <ion-col>
+        <ion-text color="dark">
+          <h3>{{this.generarFecha}}</h3>
+        </ion-text>
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-text color="dark">
+          <h3>Nombre: {{datosCliente.value.name}}<span> {{datosCliente.value.apellido}}</span> </h3>
+        </ion-text>
+      </ion-col>
+      <ion-col>
+        <ion-text color="dark">
+          <h3>Cedula: {{datosCliente.value.identificacion}}</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<div>
+  <div class="container-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Tipo P</th>
+          <th>T</th>
+          <th>Prec Unt</th>
+          <th>C</th>
+          <th>Precio T</th>
+          <th>Ad</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+        <tr *ngFor="let mi of this.shoppingCar; index as i">
+          <td>{{i+1}}</td>
+          <td class="item-prenda">{{mi.prenda}}</td>
+          <td>{{mi.talla}}</td>
+          <td>${{mi.precio}}</td>
+          <td> <div class="container-cantidad">
+            <div>{{mi.cantidad}}</div>
+            <div class="container-buttons">
+              <button (click)="aumentar(i)">
+                <ion-icon name="caret-up-outline"></ion-icon></button>
+              <button (click)="disminuir(i)">
+                <ion-icon name="caret-down-outline"></ion-icon>
+              </button>
+            </div>
+          </div></td>
+          <td>${{mi.total}}</td>
+          <td>
+            <ion-icon (click)="borrarElemento(i)" name="trash-sharp"></ion-icon>
+          
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+
+    <div>
+      <h2 class="title-h2">Total: $ <span>{{Total}}</span></h2>
+    </div>
+  </div>
+</div>
+
+
+
+<ion-button (click)="generarPDF()" [disabled]="(miformulario2.invalid || datosCliente.invalid || this.shoppingCar.length<1)">
+  <ion-ripple-effect >Add</ion-ripple-effect>Create Pdf</ion-button>

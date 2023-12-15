@@ -67,3 +67,6 @@ export const tipoPrenda:any[]=[
   {"prenda":"pantalon"},
   {"prenda":"falda"},   
 ];
+
+
+
