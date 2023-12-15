@@ -22,7 +22,11 @@ export class FacturaComponent  implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const fechaActual = new Date();
+    const fechaFormateada:any = this.formatearFecha(fechaActual);
+    this.generarFecha = fechaFormateada;
+  }
   
   shoppingCar:any[]=[];
   arrayCargarUnicamente:any[]=[];
@@ -141,12 +145,9 @@ export class FacturaComponent  implements OnInit {
 
     console.log(filas);
 
-    const fechaActual = new Date();
-    const fechaFormateada:any = this.formatearFecha(fechaActual);
-    this.generarFecha = fechaFormateada;
+   
 
 
-    console.log(fechaFormateada);
   
     // Configurar la definición del documento PDF
     const docDefinition:any = {
@@ -161,7 +162,7 @@ export class FacturaComponent  implements OnInit {
         {
           text:'\n'
         },
-        {text: fechaFormateada},
+        {text: 'fechaFormateada'},
         {
           table: {
             headerRows: 1,
