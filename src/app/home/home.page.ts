@@ -13,21 +13,16 @@ import {tallas, precios} from '../archives/arrays';
 })
 export class HomePage {
 
-  constructor( private platform: Platform,
-    @Optional() private routerOutlet?: IonRouterOutlet) {
-
-      this.platform.backButton.subscribeWithPriority(10, () => {
-        console.log('Handler was called!');
-      });
-  }
+  constructor() {}
 
   filtrarTalla:any[]=[];
   shoppingCar:any[]=[];
   Total:number=0;
   tallas = tallas;
   precios=precios;
-  generarFecha:any;
+  generarFecha:any=null;
   favoriteSeason:string="";
+  //idFacturra:Date="2020-05-12T23:50:21.817Z";
 
 
  
@@ -49,19 +44,23 @@ export class HomePage {
 
   if(miformulario2.value.gender=="male"){
     let productoMale = this.precios.filter((elemento)=>{
-      return (elemento.talla==miformulario2.value.tallaPrenda && elemento.prenda!="falda" );}).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
+      return (elemento.talla==miformulario2.value.tallaPrenda && elemento.prenda!="falda" && elemento.prenda!="jardinera" );}).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
     this.shoppingCar=[...productoMale];
    this.sumarTotal();
    
   }else if(miformulario2.value.gender=="female"){
     let productoFemale = this.precios.filter((elemento)=>{
-      return (elemento.talla==miformulario2.value.tallaPrenda && elemento.prenda!="pantalon" );}).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
+      return (elemento.talla==miformulario2.value.tallaPrenda && elemento.prenda!="pantalon" && elemento.prenda!="jardinera");}).map((ver: any)=>({...ver, cantidad:1, total:1*ver.precio}));
     this.shoppingCar=[...productoFemale];
     this.sumarTotal();
   }
-  const fechaActual = new Date();
-  const fechaFormateada= this.formatearFecha(fechaActual);
-  this.generarFecha = fechaFormateada;
+
+  if(this.generarFecha==null){
+
+    const fechaActual = new Date();
+    const fechaFormateada= this.formatearFecha(fechaActual);
+    this.generarFecha = fechaFormateada;
+  }
  }
 
   sumarTotal(): void{
